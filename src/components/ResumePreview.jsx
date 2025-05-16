@@ -14,7 +14,7 @@ export default function ResumePreview({ formData, template }) {
       : 'text-xl font-semibold border-b';
 
   return (
-    <div className="p-6 bg-white rounded shadow-md w-full max-w-2xl space-y-4">
+    <div id="resume-preview" className="p-6 bg-white rounded shadow-md w-full max-w-2xl space-y-4">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold">{formData.name || 'Your Name'}</h1>
