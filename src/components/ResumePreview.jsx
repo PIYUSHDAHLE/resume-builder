@@ -1,30 +1,36 @@
 export default function ResumePreview({ formData, template }) {
-  const titleClass = template === 'minimalist'
-    ? "text-lg font-medium"
-    : template === 'classic'
-    ? "text-2xl font-serif underline"
-    : "text-xl font-semibold";
+  const titleClass =
+    template === 'minimalist'
+      ? 'text-lg font-medium'
+      : template === 'classic'
+      ? 'text-2xl font-serif underline'
+      : 'text-xl font-semibold';
 
-  const sectionSpacing = template === 'modern' ? "space-y-4" : "space-y-3";
+  const sectionSpacing = template === 'modern' ? 'space-y-4' : 'space-y-3';
 
-  const sectionTitleClass = template === 'classic'
-    ? "text-lg font-bold uppercase border-b"
-    : "text-xl font-semibold border-b";
+  const sectionTitleClass =
+    template === 'classic'
+      ? 'text-lg font-bold uppercase border-b'
+      : 'text-xl font-semibold border-b';
 
   return (
     <div className="p-6 bg-white rounded shadow-md w-full max-w-2xl space-y-4">
+      {/* Header */}
       <div className="text-center">
-        <h1 className="text-3xl font-bold">{formData.name || "Your Name"}</h1>
-        <p>{formData.email || "Email Address"}</p>
-        <p>{formData.phone || "Phone Number"}</p>
+        <h1 className="text-3xl font-bold">{formData.name || 'Your Name'}</h1>
+        <p>{formData.email || 'Email Address'}</p>
+        <p>{formData.phone || 'Phone Number'}</p>
       </div>
 
+      {/* Sections */}
       <div className={sectionSpacing}>
         {/* Summary */}
-        <div>
-          <h2 className={sectionTitleClass}>Professional Summary</h2>
-          <p className="text-gray-700">{formData.summary || "Write your summary here..."}</p>
-        </div>
+        {formData.summary && (
+          <div>
+            <h2 className={sectionTitleClass}>Professional Summary</h2>
+            <p className="text-gray-700">{formData.summary}</p>
+          </div>
+        )}
 
         {/* Education */}
         {formData.education.length > 0 && (
@@ -59,7 +65,9 @@ export default function ResumePreview({ formData, template }) {
             <h2 className={sectionTitleClass}>Skills</h2>
             <ul className="flex flex-wrap gap-2">
               {formData.skills.map((skill, index) => (
-                <li key={index} className="bg-gray-200 px-3 py-1 rounded text-sm">{skill}</li>
+                <li key={index} className="bg-gray-200 px-3 py-1 rounded text-sm">
+                  {skill}
+                </li>
               ))}
             </ul>
           </div>
